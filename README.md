@@ -100,3 +100,37 @@ Antes de desplegar la aplicación, asegúrate de tener instalados los siguientes
 
 > 🔧 **Recomendación:** Verifica que cada herramienta esté instalada correctamente antes de continuar.  
 
+---
+## 🛠️ Instalación y Configuración
+
+## 🔧 1. Configurar la base de datos MongoDB  
+
+La API utiliza **MongoDB** como almacenamiento de datos. Puedes configurarlo de dos maneras:
+
+---
+
+### 🖥️ Opción 1: MongoDB Local
+
+1. Descarga e instala **MongoDB Community Server** desde [mongodb.com/try/download/community](https://www.mongodb.com/try/download/community).
+2. Asegúrate de que el servicio esté corriendo en `localhost:27017`.
+3. Usa **MongoDB Compass** (opcional) para visualizar la base de datos y las colecciones.
+4. Crea la base de datos `test_accenture_bd` manualmente o deja que Spring Boot la cree automáticamente cuando insertes documentos.
+
+---
+### 📥 2. Clonar el repositorio
+
+Para obtener el código fuente del proyecto, abre una terminal y ejecuta:
+
+```bash
+git clone https://github.com/AJulio569/franchise-app.git
+cd franchise-app
+
+
+
+### 🐳 Opción 2: MongoDB con Docker
+
+Si prefieres una instalación más rápida y aislada, puedes usar Docker:
+
+```bash
+docker run -d -p 27017:27017 --name mongodb mongo:6.0
+
