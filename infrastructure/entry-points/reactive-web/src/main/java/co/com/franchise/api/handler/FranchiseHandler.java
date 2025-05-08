@@ -1,14 +1,6 @@
 package co.com.franchise.api.handler;
 
-import co.com.franchise.api.dto.request.FranchiseIdRequest;
-import co.com.franchise.api.dto.request.FranchiseRequest;
-import co.com.franchise.api.dto.request.BranchRequest;
-import co.com.franchise.api.dto.request.FranchiseBranchRequest;
-import co.com.franchise.api.dto.request.ProductRequest;
-import co.com.franchise.api.dto.request.FranchiseProductRequest;
-import co.com.franchise.api.dto.request.UpdateStockRequest;
-import co.com.franchise.api.dto.request.UpdateBranchNameRequest;
-import co.com.franchise.api.dto.request.UpdateProductNameRequest;
+import co.com.franchise.api.dto.request.*;
 import co.com.franchise.api.dto.response.TopStockProductResponse;
 import co.com.franchise.api.mapper.IFranchiseMapperDto;
 import co.com.franchise.model.franchise.gateways.intport.IFranchiseServiceIntPort;
@@ -66,13 +58,12 @@ public class FranchiseHandler {
         return Mono.just(new FranchiseIdRequest(request.pathVariable("franchiseId")))
                 .flatMap(validatorHandler::validate)
                 .flatMap(validId ->
-                        request.bodyToMono(FranchiseRequest.class)
+                        request.bodyToMono(UpdateFranchiseNameRequest.class)
                                 .flatMap(validatorHandler::validate)
-                                .map(mapperDto::toDomain)
                                 .flatMap(franchise ->
                                         servicePort.updateFranchiseName(
                                         validId.getId(),
-                                        franchise.getName()))
+                                        franchise.getNewName()))
                                 .map(mapperDto::toResponse)
                                 .flatMap(response -> ServerResponse.ok()
                                         .contentType(MediaType.APPLICATION_JSON)

@@ -51,15 +51,13 @@ public class FranchiseUseCase implements IFranchiseServiceIntPort {
 
     @Override
     public Mono<Franchise> updateFranchiseName(String franchiseId, String newName) {
-        String normalizedNewName = normalizeName(newName);
-
         return repository.findById(franchiseId)
                 .switchIfEmpty(Mono.error(new EntityNotFoundException("Franchise not found with id: " + franchiseId)))
                 .flatMap(existingFranchise ->
 
                         repository.findAll()
                                 .filter(f -> !f.getId().equalsIgnoreCase(franchiseId) &&
-                                        normalizeName(f.getName()).equals(normalizedNewName))
+                                        normalizeName(f.getName()).equals(normalizeName(newName)))
                                 .hasElements()
                                 .flatMap(exists -> {
                                     if (exists) {

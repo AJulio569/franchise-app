@@ -14,8 +14,8 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FranchiseRequest implements Serializable{
+public class UpdateFranchiseNameRequest implements Serializable{
     @NotBlank(message = "The franchise name cannot be empty")
     @Pattern(regexp = "^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ ]*$", message = "The name can only contain letters, numbers, accents, and spaces")
-    private String name;
+    private String newName;
 }

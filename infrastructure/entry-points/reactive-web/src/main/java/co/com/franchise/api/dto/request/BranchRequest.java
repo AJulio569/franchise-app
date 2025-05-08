@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import java.io.Serializable;
-import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +18,4 @@ public class BranchRequest implements Serializable {
     @NotBlank(message = "The branch name cannot be empty")
     @Pattern(regexp = "^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ ]*$", message = "The name can only contain letters, numbers, accents, and spaces")
     private String name;
-
-    private List<ProductRequest> products;
 }

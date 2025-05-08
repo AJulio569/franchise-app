@@ -2,7 +2,7 @@
 
 ## Antes de Iniciar
 
-Empezaremos por explicar los diferentes componentes del proyectos y partiremos de los componentes externos, continuando con los componentes core de negocio (dominio) y por último el inicio y configuración de la aplicación.
+Empezaremos por explicar los diferentes componentes de proyectos y partiremos de los componentes externos, continuando con los componentes core de negocio (dominio) y por último el inicio y configuración de la aplicación.
 
 Lee el artículo [Clean Architecture — Aislando los detalles](https://medium.com/bancolombia-tech/clean-architecture-aislando-los-detalles-4f9530f35d7a)
 
@@ -38,13 +38,15 @@ interactuar.
 
 ### Entry Points
 
-Los entry points representan los puntos de entrada de la aplicación o el inicio de los flujos de negocio.
+Los entry points representan los puntos de entrada de la aplicación y el inicio de los flujos de negocios.
 
 ## Application
 
-Este módulo es el más externo de la arquitectura, es el encargado de ensamblar los distintos módulos, resolver las dependencias y crear los beans de los casos de use (UseCases) de forma automática, inyectando en éstos instancias concretas de las dependencias declaradas. Además inicia la aplicación (es el único módulo del proyecto donde encontraremos la función “public static void main(String[] args)”.
+Este módulo es el más externo de la arquitectura; se encarga de ensamblar los distintos módulos, resolver las dependencias y crear los beans de los casos de uso (UseCases) de forma automática, inyectando en ellos instancias concretas de las dependencias declaradas. Además, inicia la aplicación, siendo el único módulo del proyecto donde encontraremos la función public static void main(String[] args).
 
 **Los beans de los casos de uso se disponibilizan automaticamente gracias a un '@ComponentScan' ubicado en esta capa.**
+
+
 ---
 
 # 📦 Prueba Práctica Dev. Backend API de Gestión de Franquicias
@@ -62,6 +64,7 @@ Una **franquicia** contiene:
     - Una cantidad de stock
       
 ---
+
 ###  Objetivo
 
 La API facilita el manejo estructurado de franquicias mediante operaciones CRUD (Crear, Leer, Actualizar, Eliminar). Su propósito es proporcionar una gestión **rápida, flexible y segura** del inventario dentro de múltiples sucursales.
@@ -143,6 +146,7 @@ allprojects {
 }
 ```
 ---
+
 ## Endpoints del Proyecto  
 
 A continuación, se describen los principales endpoints disponibles en la API del proyecto.
@@ -152,7 +156,7 @@ A continuación, se describen los principales endpoints disponibles en la API de
 Este endpoint permite la creación de una nueva franquicia proporcionando su nombre en el cuerpo de la solicitud.  
 
 **Método:** `POST`  
-**URL:** `http://localhost:8081/api/franchise`  
+**URL:** `http://localhost:8081/api/franchises`  
 
 #### Ejemplo de solicitud  
 
@@ -162,37 +166,43 @@ Este endpoint permite la creación de una nueva franquicia proporcionando su nom
 }
 
 ```
+
+---
+
 ### Obtener todas las franquicias  
 
 Este endpoint permite mostrar todas las franquicias. 
 
 **Método:** `GET`  
-**URL:** `http://localhost:8081/api/franchise`  
+**URL:** `http://localhost:8081/api/franchises`  
 
 #### Ejemplo de solicitud 
 
 ```url
 
-http://localhost:8081/api/franchise
+http://localhost:8081/api/franchises
 
 ``` 
 
-### Obtener una franquicias
+---
 
-Este endpoint permite mostrar una franquicias por su ID. 
- **Remplazar** `{id}` por el ID de la franquicia 
+### Obtener una franquicia
+
+Este endpoint permite mostrar una franquicia por su ID. 
+ **Remplazar** `{franchiseId}` por el ID de la franquicia 
 
 **Método:** `GET`  
-**URL:** `http://localhost:8081/api/franchise/id/{id}`  
+**URL:** `http://localhost:8081/api/franchises/{franchiseId}`  
 
 #### Ejemplo de solicitud 
 
 ```url
 
-http://localhost:8081/api/franchise/id/680fb4c7dbcd1f7a78649310
+http://localhost:8081/api/franchise/680fb4c7dbcd1f7a78649310
 
 ``` 
 
+---
 
 ### Agregar una nueva sucursal a la franquicia
 
@@ -200,7 +210,7 @@ http://localhost:8081/api/franchise/id/680fb4c7dbcd1f7a78649310
  **Remplazar** `{franchiseId}` por el ID de la franquicia 
 
 **Método:** `POST`  
-**URL:** `http://localhost:8081/api/franchise/id/{franchiseId}/branch` 
+**URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches` 
 
 #### Ejemplo de solicitud  
 
@@ -211,14 +221,15 @@ http://localhost:8081/api/franchise/id/680fb4c7dbcd1f7a78649310
 }
 
 ```
+---
 
 ###  Agregar un nuevo producto a la sucursal 
 
-Este endpoint permite agregar una nuevo producto a la  sucursal de una franquicia proporcionando su nombre y stock en el cuerpo de la solicitud.
+Este endpoint permite agregar un nuevo producto a la sucursal de una franquicia proporcionando su nombre y stock en el cuerpo de la solicitud.
  **Remplazar** `{franchiseId}` por el ID de la franquicia y `{branchName}` por el nombre de la sucursal
 
 **Método:** `POST`  
-**URL:** `http://localhost:8081/api/franchise/id/{franchiseId}/branch/{branchName}/product` 
+**URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products` 
 
 #### Ejemplo de solicitud  
 
@@ -230,6 +241,7 @@ Este endpoint permite agregar una nuevo producto a la  sucursal de una franquici
 }
 
 ```
+---
 
 ###  Eliminar un producto a una sucursal  
 
@@ -237,24 +249,25 @@ Este endpoint permite eliminar un producto de la sucursal de una franquicia prop
  **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal y `{productName}` por el nombre del producto
 
 **Método:** `DELETE`  
-**URL:** `http://localhost:8081/api/franchise/id/{franchiseId}/branch/{branchName}/product/{productName}` 
+**URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}` 
 
 #### Ejemplo de solicitud  
 
 ```url
 
-http://localhost:8081/api/franchise/id/680fb4c7dbcd1f7a78649310/branch/NameBranch/product/NameProduct
+http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310/branches/NameBranch/products/NameProduct
 
 ```
+---
 
-###  Actualizar un Stock de un nuevo producto 
+###  Actualizar un Stock de un producto 
 
 Este endpoint permite actualizar un stock de producto en la sucursal de una franquicia.
  **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal y `{productName}` por el nombre del producto
 
 
 **Método:** `PUT`  
-**URL:** `http://localhost:8081/api/franchise/id/{franchiseId}/branch/{branchName}/product/{productName}/stock` 
+**URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/stock` 
 
 #### Ejemplo de solicitud 
 
@@ -264,50 +277,52 @@ Este endpoint permite actualizar un stock de producto en la sucursal de una fran
 }
 
 ```
+---
 
-###  Obtener cual es el producto que más stock tiene por sucursal
+###  Obtener el producto que más stock tiene por sucursal
 
-Este endpoint permite  mostrar cual es el producto que más stock tiene por sucursal para una 
-franquicia puntual. Retorna un listado de productos que indiquen a que sucursal pertenece. 
+Este endpoint permite mostrar el producto con mayor stock por sucursal dentro de una franquicia específica. 
+Retorna un listado de productos que indican a qué sucursal pertenecen.
  **Remplazar** `{franchiseId}` por el ID de la franquicia 
 
 
 **Método:** `GET`  
-**URL:** `http://localhost:8081/api/franchise/id/{franchiseId}/product/top-stock` 
+**URL:** `http://localhost:8081/api/franchises/{franchiseId}/products/top-stock"` 
 
 #### Ejemplo de solicitud 
 
 ```url
 
-http://localhost:8081/api/franchise/id/680fb4c7dbcd1f7a78649310/product/top-stock
+http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310/product/top-stock
 
 ```
+---
 
 ###  Actualizar el nombre de la franquicia
 
 Este endpoint permite Actualizar el nombre de una franquicia proporcionando su nuevo nombre en el cuerpo de la solicitud.
- **Remplazar** `{id}` por el ID de la franquicia que se va actualizar
+ **Remplazar** `{franchiseId}` por el ID de la franquicia que se va a actualizar
 
 **Método:** `PUT`  
-**URL:** `http://localhost:8081/api/franchise/id/{id}` 
+**URL:** `http://localhost:8081/api/franchises/{franchiseId}` 
 
 #### Ejemplo de solicitud 
 
 ```json
 {
-    "name": "NameFranchise"
+    "newName": "NameFranchise"
 }
 
 ```
+---
 
 ###   Actualizar el nombre de la sucursal
 
-
 Este endpoint permite Actualizar el nombre de una sucursal proporcionando su nuevo nombre en el cuerpo de la solicitud.
- **Remplazar** `{franchiseId}` por el ID de la franquicia y `{branchName}` por el nombre de la sucursal que se va actualizar
+ **Remplazar** `{franchiseId}` por el ID de la franquicia y `{branchName}` por el nombre de la sucursal que se va a actualizar
 
 **Método:** `PUT`  
-**URL:** `http://localhost:8081/api/franchise/id/{franchiseId}/branch/{branchName}/name` 
+**URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/name` 
 
 #### Ejemplo de solicitud 
 
@@ -317,14 +332,15 @@ Este endpoint permite Actualizar el nombre de una sucursal proporcionando su nue
 }
 
 ```
+---
 
 ###    Actualizar el nombre del producto
 
 Este endpoint permite Actualizar el nombre del producto proporcionando su nuevo nombre en el cuerpo de la solicitud.
- **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal que se va actualizar y `{productName}` por el nombre del producto que se va actualizar
+ **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal que se va a actualizar y `{productName}` por el nombre del producto que se va a actualizar
 
 **Método:** `PUT`  
-**URL:** `http://localhost:8081/api/franchise/id/{franchiseId}/branch/{branchName}/product/{productName}/name` 
+**URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/name` 
 
 #### Ejemplo de solicitud 
 
@@ -334,8 +350,8 @@ Este endpoint permite Actualizar el nombre del producto proporcionando su nuevo 
 }
 
 ```
-
-
+---
+ 
 
 
 
