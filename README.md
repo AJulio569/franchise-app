@@ -109,8 +109,9 @@ Este endpoint permite la creación de una nueva franquicia proporcionando su nom
 **Método:** `POST`  
 **URL:** `http://localhost:8081/api/franchises`  
 
-#### Ejemplo de solicitud  
+#### 🧪 Ejemplo de solicitud  
 
+**Request body**
 ```json
 {
   "name": "NameFranchise"
@@ -127,7 +128,7 @@ Este endpoint permite mostrar todas las franquicias.
 **Método:** `GET`  
 **URL:** `http://localhost:8081/api/franchises`  
 
-#### Ejemplo de solicitud 
+#### 🧪 Ejemplo de solicitud 
 
 ```url
 
@@ -146,7 +147,7 @@ Este endpoint permite mostrar una franquicia por su ID.
 **Método:** `GET`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}`  
 
-#### Ejemplo de solicitud 
+#### 🧪 Ejemplo de solicitud 
 
 ```url
 
@@ -167,9 +168,9 @@ http://localhost:8081/api/franchise/680fb4c7dbcd1f7a78649310
 **Método:** `POST`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches` 
 
-#### Ejemplo de solicitud  
+#### 🧪 Ejemplo de solicitud  
 
-
+**Request body**
 ```json
 {
   "name": "NameBranch"
@@ -189,9 +190,9 @@ Este endpoint permite agregar un nuevo producto a la sucursal de una franquicia 
 **Método:** `POST`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products` 
 
-#### Ejemplo de solicitud  
+####  🧪 Ejemplo de solicitud  
 
-
+**Request body**
 ```json
 {
     "name":"NameProduct" ,
@@ -212,7 +213,7 @@ Este endpoint permite eliminar un producto de la sucursal de una franquicia prop
 **Método:** `DELETE`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}` 
 
-#### Ejemplo de solicitud  
+#### 🧪 Ejemplo de solicitud  
 
 ```url
 
@@ -233,8 +234,8 @@ Este endpoint permite actualizar un stock de producto en la sucursal de una fran
 **Método:** `PUT`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/stock` 
 
-#### Ejemplo de solicitud 
-
+#### 🧪 Ejemplo de solicitud 
+**Request body**
 ```json
 {
     "newStock": 100
@@ -256,7 +257,7 @@ Retorna un listado de productos que indican a qué sucursal pertenecen.
 **Método:** `GET`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/products/top-stock"` 
 
-#### Ejemplo de solicitud 
+####  🧪 Ejemplo de solicitud 
 
 ```url
 
@@ -273,8 +274,8 @@ Este endpoint permite Actualizar el nombre de una franquicia proporcionando su n
 **Método:** `PUT`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}` 
 
-#### Ejemplo de solicitud 
-
+####  🧪 Ejemplo de solicitud 
+**Request body**
 ```json
 {
     "newName": "NameFranchise"
@@ -293,8 +294,8 @@ Este endpoint permite Actualizar el nombre de una sucursal proporcionando su nue
 **Método:** `PUT`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/name` 
 
-#### Ejemplo de solicitud 
-
+####   🧪 Ejemplo de solicitud 
+**Request body**
 ```json
 {
     "newName": "NameBranch"
@@ -313,8 +314,8 @@ Este endpoint permite Actualizar el nombre del producto proporcionando su nuevo 
 **Método:** `PUT`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/name` 
 
-#### Ejemplo de solicitud 
-
+####   🧪 Ejemplo de solicitud 
+**Request body**
 ```json
 {
     "newName": "NameProduct"
