@@ -140,6 +140,7 @@ http://localhost:8081/api/franchises
 ### 🔍 Obtener una franquicia
 
 Este endpoint permite mostrar una franquicia por su ID. 
+#### 📥 Parámetros
  **Remplazar** `{franchiseId}` por el ID de la franquicia 
 
 **Método:** `GET`  
@@ -158,6 +159,9 @@ http://localhost:8081/api/franchise/680fb4c7dbcd1f7a78649310
 ### 🏢 Agregar una nueva sucursal a la franquicia
 
  Este endpoint permite agregar una nueva sucursal a la franquicia proporcionando su nombre en el cuerpo de la solicitud.
+ 
+ #### 📥 Parámetros
+ 
  **Remplazar** `{franchiseId}` por el ID de la franquicia 
 
 **Método:** `POST`  
@@ -177,6 +181,9 @@ http://localhost:8081/api/franchise/680fb4c7dbcd1f7a78649310
 ### 📦  Agregar un nuevo producto a la sucursal 
 
 Este endpoint permite agregar un nuevo producto a la sucursal de una franquicia proporcionando su nombre y stock en el cuerpo de la solicitud.
+
+#### 📥 Parámetros
+
  **Remplazar** `{franchiseId}` por el ID de la franquicia y `{branchName}` por el nombre de la sucursal
 
 **Método:** `POST`  
@@ -197,6 +204,9 @@ Este endpoint permite agregar un nuevo producto a la sucursal de una franquicia 
 ### 🗑️ Eliminar un producto a una sucursal  
 
 Este endpoint permite eliminar un producto de la sucursal de una franquicia proporcionando su nuevo stock en el cuerpo de la solicitud.
+
+#### 📥 Parámetros
+
  **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal y `{productName}` por el nombre del producto
 
 **Método:** `DELETE`  
@@ -214,6 +224,9 @@ http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310/branches/NameBranc
 ### 🔄 Actualizar un Stock de un producto 
 
 Este endpoint permite actualizar un stock de producto en la sucursal de una franquicia.
+
+#### 📥 Parámetros
+
  **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal y `{productName}` por el nombre del producto
 
 
@@ -234,6 +247,9 @@ Este endpoint permite actualizar un stock de producto en la sucursal de una fran
 
 Este endpoint permite mostrar el producto con mayor stock por sucursal dentro de una franquicia específica. 
 Retorna un listado de productos que indican a qué sucursal pertenecen.
+
+#### 📥 Parámetros
+
  **Remplazar** `{franchiseId}` por el ID de la franquicia 
 
 
@@ -270,6 +286,8 @@ Este endpoint permite Actualizar el nombre de una franquicia proporcionando su n
 ###  📝 Actualizar el nombre de la sucursal
 
 Este endpoint permite Actualizar el nombre de una sucursal proporcionando su nuevo nombre en el cuerpo de la solicitud.
+#### 📥 Parámetros
+
  **Remplazar** `{franchiseId}` por el ID de la franquicia y `{branchName}` por el nombre de la sucursal que se va a actualizar
 
 **Método:** `PUT`  
@@ -288,6 +306,8 @@ Este endpoint permite Actualizar el nombre de una sucursal proporcionando su nue
 ### ✏️  Actualizar el nombre del producto
 
 Este endpoint permite Actualizar el nombre del producto proporcionando su nuevo nombre en el cuerpo de la solicitud.
+#### 📥 Parámetros
+
  **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal que se va a actualizar y `{productName}` por el nombre del producto que se va a actualizar
 
 **Método:** `PUT`  
