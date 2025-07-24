@@ -1,11 +1,14 @@
 
+<img width="1024" height="1024" alt="ChatGPT Image 23 jul 2025, 08_35_59 p m" src="https://github.com/user-attachments/assets/4c4ca592-9b90-4a48-a576-345a2511f1f0" />
+
+
 # 📦  API de Franquicias - Arquitectura Hexagonal con Java WebFlux y MongoDB (Reactive)
 
 Este proyecto es una API REST reactiva desarrollada en **Java 17**, usando **Spring Boot WebFlux**, **MongoDB** y siguiendo la **arquitectura limpia hexagonal** propuesta por el _scaffold-clean-architecture_ de Bancolombia. Permite gestionar franquicias, sucursales y productos, así como consultar el producto con más stock por sucursal.
 
 ---
 
-## Descripción del Proyecto
+## 📖 Descripción del Proyecto
 Este proyecto consiste en una **API REST** diseñada para la administración de franquicias, permitiendo la gestión eficiente de sucursales y productos.
 Una **franquicia** contiene:
 - Un nombre
@@ -17,13 +20,13 @@ Una **franquicia** contiene:
       
 ---
 
-###  Objetivo
+### 🎯 Objetivo
 
 La API facilita el manejo estructurado de franquicias mediante operaciones CRUD (Crear, Leer, Actualizar, Eliminar). Su propósito es proporcionar una gestión **rápida, flexible y segura** del inventario dentro de múltiples sucursales.
 
 ---
 
-###  Características Principales
+### ⚙️ Características Principales
 
 -  **Arquitectura basada en Clean Architecture**  
   Separación clara de responsabilidades mediante capas: dominio, aplicación y adaptadores. Aplicación de principios **SOLID** para un diseño limpio y mantenible.
@@ -44,7 +47,7 @@ La API facilita el manejo estructurado de franquicias mediante operaciones CRUD 
   Facilitando el despliegue de la aplicación en local mediante Docker o Maven, con endpoints bien definidos.
 
 ---
-##  Requisitos
+## 🧰 Requisitos
 
 Antes de desplegar la aplicación, asegúrate de tener instalados los siguientes componentes:
 
@@ -52,22 +55,18 @@ Antes de desplegar la aplicación, asegúrate de tener instalados los siguientes
 |-----------------------------|------------------------------------------------------------------------------|
 | ☕ **Java 17**             | Versión recomendada para ejecutar el backend con Spring Boot.                |
 | 📦 **Gradle**              | Usado para compilar, construir y gestionar las dependencias del proyecto.    |
-| 🧭 **MongoDB Compass**     | Herramienta visual para gestionar y consultar la base de datos MongoDB.      |
-| 🔍 **Postman**             | Ideal para probar manualmente los endpoints REST de la API.                  |
+| 🍃 **MongoDB Compass**     | Herramienta visual para gestionar y consultar la base de datos MongoDB.      |
+| 📫 **Postman**             | Ideal para probar manualmente los endpoints REST de la API.                  |
 | 🐳 **Docker** *(opcional)* | Permite levantar MongoDB y/o el backend en contenedores de forma rápida.     |
 
 > 🔧 **Recomendación:** Verifica que cada herramienta esté instalada correctamente antes de continuar.  
 
 ---
-##  Instalación y Configuración
-
-##  1. Configurar la base de datos MongoDB  
-
-La API utiliza **MongoDB** como almacenamiento de datos. Puedes configurarlo de dos maneras:
-
----
+## ⚙🛠️ Instalación y Configuración
 
 ###  1. MongoDB Local
+
+La API utiliza **MongoDB** como almacenamiento de datos. Puedes configurarlo de dos maneras:
 
 1. Descarga e instala **MongoDB Community Server** desde [mongodb.com/try/download/community](https://www.mongodb.com/try/download/community).
 2. Asegúrate de que el servicio esté corriendo en `localhost:27017`.
@@ -99,11 +98,11 @@ allprojects {
 ```
 ---
 
-## Endpoints del Proyecto  
+## 🌐 Endpoints del Proyecto  
 
 A continuación, se describen los principales endpoints disponibles en la API del proyecto.
 
-### Agregar una nueva franquicia  
+### ➕ Agregar una nueva franquicia  
 
 Este endpoint permite la creación de una nueva franquicia proporcionando su nombre en el cuerpo de la solicitud.  
 
@@ -121,7 +120,7 @@ Este endpoint permite la creación de una nueva franquicia proporcionando su nom
 
 ---
 
-### Obtener todas las franquicias  
+### 📋 Obtener todas las franquicias  
 
 Este endpoint permite mostrar todas las franquicias. 
 
@@ -138,7 +137,7 @@ http://localhost:8081/api/franchises
 
 ---
 
-### Obtener una franquicia
+### 🔍 Obtener una franquicia
 
 Este endpoint permite mostrar una franquicia por su ID. 
  **Remplazar** `{franchiseId}` por el ID de la franquicia 
@@ -156,7 +155,7 @@ http://localhost:8081/api/franchise/680fb4c7dbcd1f7a78649310
 
 ---
 
-### Agregar una nueva sucursal a la franquicia
+### 🏢 Agregar una nueva sucursal a la franquicia
 
  Este endpoint permite agregar una nueva sucursal a la franquicia proporcionando su nombre en el cuerpo de la solicitud.
  **Remplazar** `{franchiseId}` por el ID de la franquicia 
@@ -175,7 +174,7 @@ http://localhost:8081/api/franchise/680fb4c7dbcd1f7a78649310
 ```
 ---
 
-###  Agregar un nuevo producto a la sucursal 
+### 📦  Agregar un nuevo producto a la sucursal 
 
 Este endpoint permite agregar un nuevo producto a la sucursal de una franquicia proporcionando su nombre y stock en el cuerpo de la solicitud.
  **Remplazar** `{franchiseId}` por el ID de la franquicia y `{branchName}` por el nombre de la sucursal
@@ -195,7 +194,7 @@ Este endpoint permite agregar un nuevo producto a la sucursal de una franquicia 
 ```
 ---
 
-###  Eliminar un producto a una sucursal  
+### 🗑️ Eliminar un producto a una sucursal  
 
 Este endpoint permite eliminar un producto de la sucursal de una franquicia proporcionando su nuevo stock en el cuerpo de la solicitud.
  **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal y `{productName}` por el nombre del producto
@@ -212,7 +211,7 @@ http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310/branches/NameBranc
 ```
 ---
 
-###  Actualizar un Stock de un producto 
+### 🔄 Actualizar un Stock de un producto 
 
 Este endpoint permite actualizar un stock de producto en la sucursal de una franquicia.
  **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal y `{productName}` por el nombre del producto
@@ -231,7 +230,7 @@ Este endpoint permite actualizar un stock de producto en la sucursal de una fran
 ```
 ---
 
-###  Obtener el producto que más stock tiene por sucursal
+### 🥇 Obtener el producto que más stock tiene por sucursal
 
 Este endpoint permite mostrar el producto con mayor stock por sucursal dentro de una franquicia específica. 
 Retorna un listado de productos que indican a qué sucursal pertenecen.
@@ -250,7 +249,7 @@ http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310/product/top-stock
 ```
 ---
 
-###  Actualizar el nombre de la franquicia
+### ✏️ Actualizar el nombre de la franquicia
 
 Este endpoint permite Actualizar el nombre de una franquicia proporcionando su nuevo nombre en el cuerpo de la solicitud.
  **Remplazar** `{franchiseId}` por el ID de la franquicia que se va a actualizar
@@ -268,7 +267,7 @@ Este endpoint permite Actualizar el nombre de una franquicia proporcionando su n
 ```
 ---
 
-###   Actualizar el nombre de la sucursal
+###  📝 Actualizar el nombre de la sucursal
 
 Este endpoint permite Actualizar el nombre de una sucursal proporcionando su nuevo nombre en el cuerpo de la solicitud.
  **Remplazar** `{franchiseId}` por el ID de la franquicia y `{branchName}` por el nombre de la sucursal que se va a actualizar
@@ -286,7 +285,7 @@ Este endpoint permite Actualizar el nombre de una sucursal proporcionando su nue
 ```
 ---
 
-###    Actualizar el nombre del producto
+### ✏️  Actualizar el nombre del producto
 
 Este endpoint permite Actualizar el nombre del producto proporcionando su nuevo nombre en el cuerpo de la solicitud.
  **Remplazar** `{franchiseId}` por el ID de la franquicia, `{branchName}` por el nombre de la sucursal que se va a actualizar y `{productName}` por el nombre del producto que se va a actualizar
