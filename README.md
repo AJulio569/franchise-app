@@ -111,7 +111,7 @@ Este endpoint permite la creación de una nueva franquicia proporcionando su nom
 
 #### 🧪 Ejemplo de solicitud  
 
-**Request body**
+**Request Body:**
 ```json
 {
   "name": "NameFranchise"
@@ -170,7 +170,7 @@ http://localhost:8081/api/franchise/680fb4c7dbcd1f7a78649310
 
 #### 🧪 Ejemplo de solicitud  
 
-**Request body**
+**Request Body:**
 ```json
 {
   "name": "NameBranch"
@@ -190,7 +190,7 @@ Este endpoint permite agregar un nuevo producto a la sucursal de una franquicia 
 **Método:** `POST`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products` 
 
-####  🧪 Ejemplo de solicitud  
+#### 🧪 Ejemplo de solicitud  
 
 **Request body**
 ```json
@@ -235,7 +235,7 @@ Este endpoint permite actualizar un stock de producto en la sucursal de una fran
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/stock` 
 
 #### 🧪 Ejemplo de solicitud 
-**Request body**
+**Request Body:**
 ```json
 {
     "newStock": 100
@@ -257,7 +257,7 @@ Retorna un listado de productos que indican a qué sucursal pertenecen.
 **Método:** `GET`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/products/top-stock"` 
 
-####  🧪 Ejemplo de solicitud 
+#### 🧪 Ejemplo de solicitud 
 
 ```url
 
@@ -274,8 +274,8 @@ Este endpoint permite Actualizar el nombre de una franquicia proporcionando su n
 **Método:** `PUT`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}` 
 
-####  🧪 Ejemplo de solicitud 
-**Request body**
+#### 🧪 Ejemplo de solicitud 
+**Request Body:**
 ```json
 {
     "newName": "NameFranchise"
@@ -294,8 +294,8 @@ Este endpoint permite Actualizar el nombre de una sucursal proporcionando su nue
 **Método:** `PUT`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/name` 
 
-####   🧪 Ejemplo de solicitud 
-**Request body**
+####  🧪 Ejemplo de solicitud 
+**Request Body:**
 ```json
 {
     "newName": "NameBranch"
@@ -314,8 +314,8 @@ Este endpoint permite Actualizar el nombre del producto proporcionando su nuevo 
 **Método:** `PUT`  
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/name` 
 
-####   🧪 Ejemplo de solicitud 
-**Request body**
+####  🧪 Ejemplo de solicitud 
+**Request Body:**
 ```json
 {
     "newName": "NameProduct"
