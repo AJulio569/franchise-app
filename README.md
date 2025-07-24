@@ -114,11 +114,23 @@ Este endpoint permite la creación de una nueva franquicia proporcionando su nom
 **Request Body:**
 ```json
 {
-  "name": "NameFranchise"
+  "name": "ROOTT+CO"
 }
 
 ```
 
+**Response**
+
+**Code:** `201 Created`
+
+```json
+{
+  "id": "664b2a7d47b8a72fc9e4f2c3",
+  "name": "ROOTT+CO",
+  "branches": []
+}
+
+```
 ---
 
 ### 📋 Obtener todas las franquicias  
@@ -135,7 +147,26 @@ Este endpoint permite mostrar todas las franquicias.
 http://localhost:8081/api/franchises
 
 ``` 
+**Response**
 
+**Code:** `200 OK`
+
+```json
+[
+  {
+      "id": "664b2a7d47b8a72fc9e4f2c3",
+      "name": "ROOTT+CO",
+      "branches": []
+  },
+  {
+     "id": "664b2a7d47b8a72fc9e4f2c4",
+     "name": "NIKE",
+     "branches": []
+  }
+]
+
+
+```
 ---
 
 ### 🔍 Obtener una franquicia
@@ -151,10 +182,22 @@ Este endpoint permite mostrar una franquicia por su ID.
 
 ```url
 
-http://localhost:8081/api/franchise/680fb4c7dbcd1f7a78649310
+http://localhost:8081/api/franchise/664b2a7d47b8a72fc9e4f2c3
 
-``` 
+```
 
+**Response**
+
+**Code:** `200 OK`
+
+```json
+  {
+      "id": "664b2a7d47b8a72fc9e4f2c3",
+      "name": "ROOTT+CO",
+      "branches": []
+  }
+
+```
 ---
 
 ### 🏢 Agregar una nueva sucursal a la franquicia
@@ -169,12 +212,31 @@ http://localhost:8081/api/franchise/680fb4c7dbcd1f7a78649310
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches` 
 
 #### 🧪 Ejemplo de solicitud  
-
+```url
+  `http://localhost:8081/api/franchises/664b2a7d47b8a72fc9e4f2c3/branches
+```
 **Request Body:**
 ```json
 {
-  "name": "NameBranch"
+  "name": "Sucursal Centro"
 }
+
+```
+**Response**
+
+**Code:** `201 Created`
+
+```json
+  {
+      "id": "664b2a7d47b8a72fc9e4f2c3",
+      "name": "ROOTT+CO",
+      "branches": [
+        { 
+           "name": "Sucursal Centro",
+           "products": []
+        }
+    ]
+  }
 
 ```
 ---
@@ -191,13 +253,39 @@ Este endpoint permite agregar un nuevo producto a la sucursal de una franquicia 
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products` 
 
 #### 🧪 Ejemplo de solicitud  
+```url
+  `http://localhost:8081/api/franchises/664b2a7d47b8a72fc9e4f2c3/Sucursal Centro/products
+```
 
 **Request body**
 ```json
 {
-    "name":"NameProduct" ,
+    "name":"Camiseta X" ,
     "stock": 20
 }
+
+```
+
+**Response**
+
+**Code:** `201 Created`
+
+```json
+  {
+      "id": "664b2a7d47b8a72fc9e4f2c3",
+      "name": "ROOTT+CO",
+      "branches": [
+        { 
+           "name": "Sucursal Centro",
+           "products": [
+              {
+                 "name":"Camiseta X" ,
+                 "stock": 20
+              }
+          ]
+        }
+    ]
+  }
 
 ```
 ---
@@ -217,9 +305,13 @@ Este endpoint permite eliminar un producto de la sucursal de una franquicia prop
 
 ```url
 
-http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310/branches/NameBranch/products/NameProduct
+http://localhost:8081/api/franchises/664b2a7d47b8a72fc9e4f2c3/branches/Sucursal Centro/products/Camiseta X
 
 ```
+**Response**
+
+**Code:** `204 No Content`
+
 ---
 
 ### 🔄 Actualizar un Stock de un producto 
@@ -235,10 +327,26 @@ Este endpoint permite actualizar un stock de producto en la sucursal de una fran
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/stock` 
 
 #### 🧪 Ejemplo de solicitud 
+```url
+
+http://localhost:8081/api/franchises/664b2a7d47b8a72fc9e4f2c3/branches/Sucursal Centro/products/Camiseta X/stock
+
+```
 **Request Body:**
 ```json
 {
     "newStock": 100
+}
+
+```
+**Response**
+
+**Code:** `200 OK`
+
+```json
+  {
+  "name": "Camiseta X",
+  "stock": 100
 }
 
 ```
@@ -264,6 +372,29 @@ Retorna un listado de productos que indican a qué sucursal pertenecen.
 http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310/product/top-stock
 
 ```
+**Response**
+
+**Code:** `200 OK`
+
+```json
+  [
+  {
+    "branchName": "Sucursal Centro",
+    "product": {
+      "name": "Camiseta X",
+      "stock": 100
+    }
+  },
+  {
+    "branchName": "Sucursal Sur",
+    "product": {
+      "name": "Pantalon Z",
+      "stock": 80
+    }
+  }
+]
+
+```
 ---
 
 ### ✏️ Actualizar el nombre de la franquicia
@@ -275,10 +406,26 @@ Este endpoint permite Actualizar el nombre de una franquicia proporcionando su n
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}` 
 
 #### 🧪 Ejemplo de solicitud 
+```url
+
+http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310
+
+```
 **Request Body:**
 ```json
 {
-    "newName": "NameFranchise"
+    "newName": "Motorora"
+}
+
+```
+**Response**
+
+**Code:** `200 OK`
+
+```json
+{
+  "id": "680fb4c7dbcd1f7a78649310",
+  "newName": "Motorora"
 }
 
 ```
@@ -295,10 +442,26 @@ Este endpoint permite Actualizar el nombre de una sucursal proporcionando su nue
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/name` 
 
 ####  🧪 Ejemplo de solicitud 
+```url
+
+http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310/branches/Sucursal Centro/name
+
+```
 **Request Body:**
 ```json
 {
-    "newName": "NameBranch"
+    "newName": "Sucursdal Centro 2"
+}
+
+```
+**Response**
+
+**Code:** `200 OK`
+
+```json
+{
+
+  "newName": "Sucursdal Centro 2"
 }
 
 ```
@@ -315,14 +478,130 @@ Este endpoint permite Actualizar el nombre del producto proporcionando su nuevo 
 **URL:** `http://localhost:8081/api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/name` 
 
 ####  🧪 Ejemplo de solicitud 
+```url
+
+http://localhost:8081/api/franchises/680fb4c7dbcd1f7a78649310/branches/Sucursal Centro/products/Pantalo z/name
+
+```
+
 **Request Body:**
 ```json
 {
-    "newName": "NameProduct"
+    "newName": "Pantalo z-x"
+}
+
+```
+**Response**
+
+**Code:** `200 OK`
+
+```json
+{
+  "newName": "Pantalo z-x"",
+  "stock": 30
 }
 
 ```
 ---
+
+## ⚠️ Posibles errores por endpoint
+
+### 🔧 `POST /api/franchises`
+
+| Código | Error             | Causa posible                                      | Ejemplo de respuesta                                                                 |
+|--------|-------------------|----------------------------------------------------|----------------------------------------------------------------------------------------|
+| 400    | Datos inválidos   | El nombre de la franquicia es nulo o vacío         | `{ "error": "BAD_REQUEST", "message": "El nombre no puede estar vacío.", "status": 400 }` |
+| 409    | Conflicto         | Ya existe una franquicia con ese nombre            | `{ "error": "CONFLICT", "message": "La franquicia ya existe.", "status": 409 }`          |
+
+---
+
+### 🔍 `GET /api/franchises`
+
+| Código | Error                    | Causa posible                              | Ejemplo de respuesta                                                               |
+|--------|--------------------------|--------------------------------------------|------------------------------------------------------------------------------------|
+| 500    | Internal Server Error    | Error inesperado al obtener franquicias    | `{ "error": "INTERNAL_SERVER_ERROR", "message": "Error inesperado.", "status": 500 }` |
+
+---
+
+### 🔍 `GET /api/franchises/{franchiseId}`
+
+| Código | Error             | Causa posible                              | Ejemplo de respuesta                                                               |
+|--------|-------------------|--------------------------------------------|------------------------------------------------------------------------------------|
+| 400    | ID inválido       | El formato del ID es inválido              | `{ "error": "BAD_REQUEST", "message": "ID inválido.", "status": 400 }`            |
+| 404    | No encontrado     | La franquicia no existe                    | `{ "error": "NOT_FOUND", "message": "Franquicia no encontrada.", "status": 404 }` |
+
+---
+
+### 🔧 `POST /api/franchises/{franchiseId}/branches`
+
+| Código | Error                        | Causa posible                                             | Ejemplo de respuesta                                                                          |
+|--------|------------------------------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| 400    | Nombre de sucursal inválido  | El nombre de la sucursal es vacío o nulo                  | `{ "error": "BAD_REQUEST", "message": "Nombre de sucursal no puede estar vacío.", "status": 400 }` |
+| 404    | Franquicia no encontrada     | El ID de la franquicia no existe                          | `{ "error": "NOT_FOUND", "message": "Franquicia no encontrada.", "status": 404 }`             |
+| 409    | Conflicto                    | Ya existe una sucursal con ese nombre en la franquicia    | `{ "error": "CONFLICT", "message": "Ya existe una sucursal con ese nombre.", "status": 409 }` |
+
+---
+
+### 🔧 `POST /api/franchises/{franchiseId}/branches/{branchName}/products`
+
+| Código | Error                    | Causa posible                                     | Ejemplo de respuesta                                                                          |
+|--------|--------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| 400    | Datos inválidos          | El nombre o el stock del producto es inválido     | `{ "error": "BAD_REQUEST", "message": "El nombre y el stock son obligatorios.", "status": 400 }` |
+| 404    | Sucursal no encontrada   | La sucursal no existe en la franquicia            | `{ "error": "NOT_FOUND", "message": "Sucursal no encontrada.", "status": 404 }`              |
+| 409    | Conflicto                | El producto ya existe en la sucursal              | `{ "error": "CONFLICT", "message": "Producto ya existe en la sucursal.", "status": 409 }`    |
+
+---
+
+### ❌ `DELETE /api/franchises/{franchiseId}/branches/{branchName}/products/{productName}`
+
+| Código | Error                | Causa posible                                | Ejemplo de respuesta                                                           |
+|--------|----------------------|----------------------------------------------|--------------------------------------------------------------------------------|
+| 404    | No encontrado        | La franquicia, sucursal o producto no existen| `{ "error": "NOT_FOUND", "message": "Producto no encontrado.", "status": 404 }` |
+
+---
+
+### 🔄 `PUT /api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/stock`
+
+| Código | Error                | Causa posible                                | Ejemplo de respuesta                                                           |
+|--------|----------------------|----------------------------------------------|--------------------------------------------------------------------------------|
+| 400    | Stock inválido       | El nuevo stock es nulo o negativo            | `{ "error": "BAD_REQUEST", "message": "Stock inválido.", "status": 400 }`     |
+| 404    | Producto no encontrado | El producto no existe en la sucursal       | `{ "error": "NOT_FOUND", "message": "Producto no encontrado.", "status": 404 }` |
+
+---
+
+### 📊 `GET /api/franchises/{franchiseId}/products/top-stock`
+
+| Código | Error                    | Causa posible                            | Ejemplo de respuesta                                                               |
+|--------|--------------------------|------------------------------------------|------------------------------------------------------------------------------------|
+| 404    | Franquicia no encontrada | No existe la franquicia con ese ID       | `{ "error": "NOT_FOUND", "message": "Franquicia no encontrada.", "status": 404 }` |
+
+---
+
+### ✏️ `PUT /api/franchises/{franchiseId}`
+
+| Código | Error                | Causa posible                              | Ejemplo de respuesta                                                                 |
+|--------|----------------------|--------------------------------------------|--------------------------------------------------------------------------------------|
+| 400    | Nombre inválido      | El nuevo nombre de la franquicia es inválido | `{ "error": "BAD_REQUEST", "message": "El nombre no puede estar vacío.", "status": 400 }` |
+| 404    | No encontrado        | La franquicia no existe                    | `{ "error": "NOT_FOUND", "message": "Franquicia no encontrada.", "status": 404 }`     |
+
+---
+
+### ✏️ `PUT /api/franchises/{franchiseId}/branches/{branchName}/name`
+
+| Código | Error                | Causa posible                                  | Ejemplo de respuesta                                                                     |
+|--------|----------------------|------------------------------------------------|------------------------------------------------------------------------------------------|
+| 400    | Nombre inválido      | El nuevo nombre de la sucursal es vacío o igual| `{ "error": "BAD_REQUEST", "message": "El nuevo nombre es inválido.", "status": 400 }`   |
+| 404    | Sucursal no encontrada | No existe la sucursal a renombrar            | `{ "error": "NOT_FOUND", "message": "Sucursal no encontrada.", "status": 404 }`          |
+
+---
+
+### ✏️ `PUT /api/franchises/{franchiseId}/branches/{branchName}/products/{productName}/name`
+
+| Código | Error                | Causa posible                                  | Ejemplo de respuesta                                                                     |
+|--------|----------------------|------------------------------------------------|------------------------------------------------------------------------------------------|
+| 400    | Nombre inválido      | El nuevo nombre del producto es vacío o inválido| `{ "error": "BAD_REQUEST", "message": "El nombre no puede estar vacío.", "status": 400 }` |
+| 404    | Producto no encontrado | No existe el producto a renombrar            | `{ "error": "NOT_FOUND", "message": "Producto no encontrado.", "status": 404 }`          |
+
  
 
 
