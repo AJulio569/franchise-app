@@ -62,7 +62,7 @@ Antes de desplegar la aplicación, asegúrate de tener instalados los siguientes
 > 🔧 **Recomendación:** Verifica que cada herramienta esté instalada correctamente antes de continuar.  
 
 ---
-## ⚙🛠️ Instalación y Configuración
+## 🛠️ Instalación y Configuración
 
 ###  1. MongoDB Local
 
