@@ -113,10 +113,9 @@ Este endpoint permite la creación de una nueva franquicia proporcionando su nom
 
 **Request Body:**
 ```json
-{
-  "name": "ROOTT+CO"
-}
-
+  {
+     "name": "ROOTT+CO"
+  }
 ```
 
 **Response**
@@ -129,7 +128,6 @@ Este endpoint permite la creación de una nueva franquicia proporcionando su nom
   "name": "ROOTT+CO",
   "branches": []
 }
-
 ```
 ---
 
@@ -282,8 +280,8 @@ Este endpoint permite agregar un nuevo producto a la sucursal de una franquicia 
                  "name":"Camiseta X" ,
                  "stock": 20
               }
-          ]
-        }
+            ]
+       }
     ]
   }
 
